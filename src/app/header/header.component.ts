@@ -2,20 +2,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: []
+  templateUrl: './header.component.html'
 })
-
 export class HeaderComponent {
-  @Output() recipesClicked = new EventEmitter();
-  @Output() shoppingListClicked = new EventEmitter();
+  @Output() featureSelected = new EventEmitter<string>();
 
-  onReipesClicked(){
-    this.recipesClicked.emit();
+  onSelect(feature: string) {
+    this.featureSelected.emit(feature);
   }
-  
-  onShoppingListClicked() {
-    this.shoppingListClicked.emit();
-  }
-
 }
