@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'recipesApp';
+  currentSection = 'recipes';
+
+  onRecipesEventFired() {
+    this.currentSection = 'recipes';
+  };
+
+  onShoppingListEventFired() {
+    this.currentSection = 'shoppingList';
+  };
 }
