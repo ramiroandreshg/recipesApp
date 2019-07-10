@@ -1,4 +1,4 @@
-import { Directive, HostBinding, HostListener } from '@angular/core';
+import { Directive, HostBinding, HostListener, ElementRef } from '@angular/core';
 
 @Directive({
   selector: '[appDropdown]'
@@ -6,12 +6,8 @@ import { Directive, HostBinding, HostListener } from '@angular/core';
 
 export class DropdownDirective {
   @HostBinding('class.open') isOpen = false;
-
-  @HostListener('click') toogleOpen() {
-    this.isOpen = !this.isOpen;
+  @HostListener('document:click', ['$event']) toggleOpen(event: Event) {
+    this.isOpen = this.elRef.nativeElement.contains(event.target) ? !this.isOpen : false;
   }
-
-  @HostListener('focusout') closeDropdown() {
-    this.isOpen = false;
-  }
+  constructor(private elRef: ElementRef) {}
 }
