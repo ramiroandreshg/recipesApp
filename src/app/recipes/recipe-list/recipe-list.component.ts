@@ -11,13 +11,13 @@ import { Subscription } from 'rxjs';
 })
 export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[];
-  subject: Subscription;
+  subscription: Subscription;
 
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
     this.recipes = this.recipeService.getRecipes();
-    this.subject = this.recipeService.recipesChanged.subscribe(
+    this.subscription = this.recipeService.recipesChanged.subscribe(
       (recipes: Recipe[]) => {
         this.recipes = recipes;
       }
@@ -25,6 +25,6 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subject.unsubscribe();
+    this.subscription.unsubscribe();
   }
 }
