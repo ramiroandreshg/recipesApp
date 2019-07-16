@@ -50,7 +50,7 @@ export class AuthService {
     }
     switch (errorRes.error.error.message) {
       case 'EMAIL_EXISTS':
-        errorMessage = 'This email exists already'
+        errorMessage = 'This email exists already';
     }
 
     return throwError(errorMessage);
